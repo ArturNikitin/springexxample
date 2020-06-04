@@ -45,10 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                     .formLogin()
-                        .loginPage("/api/login")
+                        .loginPage("/login")
                 .and()
                     .logout()
                         .logoutSuccessUrl("/")
+
                 .and()
                     .csrf()
                         .disable();

@@ -28,11 +28,6 @@ public class LoginController {
         return userRepo.findUserById(id);
     }
 
-    @GetMapping
-    public User showAllUser(@RequestParam(value = "login", required = true) String login){
-        return userRepo.findUserByLogin(login);
-    }
-
     @PostMapping
     public void addUser(@RequestParam(value = "login", required = true) String login,
                         @RequestParam(value = "password", required = true) String password) {
@@ -45,10 +40,17 @@ public class LoginController {
         userRepo.save(user);
     }
 
-    @PostMapping(value = "create", consumes = "application/json")
+    @PostMapping(value = "/create", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public void processApiRegistration(@RequestBody(required = true) User user) {
         RegistrationForm form = new RegistrationForm(user.getLogin(), user.getPassword());
         userRepo.save(form.toUser(passwordEncoder));
     }
+
+    /*@PostMapping(value = "/login", consumes = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public void processApiLogin(@RequestBody(required = true) User user) {
+        RegistrationForm form = new RegistrationForm(user.getLogin(), user.getPassword());
+        userRepo.save(form.toUser(passwordEncoder));
+    }*/
 }
