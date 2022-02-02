@@ -17,7 +17,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<postgreSQL.version>42.2.8</postgreSQL.version>
+		<postgreSQL.version>42.2.25</postgreSQL.version>
 	</properties>
 
 	<dependencies>
